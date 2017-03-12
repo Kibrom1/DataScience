@@ -1,5 +1,6 @@
+##best
 best <- function(state, outcome){
-  ## Read outcome data
+  ## Read outcome data from outcome-of-care-measures
   dataold <- read.csv("outcome-of-care-measures.csv", na.strings="Not Available", stringsAsFactors=FALSE)
   outcomes = c("heart attack" = 11, "heart failure" = 17, "pneumonia" = 23)
   
@@ -10,7 +11,7 @@ best <- function(state, outcome){
   else if(!outcome %in% names(outcomes)){
     stop("invalid outcome")
   }
-  
+  ##capturing the data
   dataold = dataold[dataold$State == state,]
   data = dataold[,c(2, outcomes[outcome])]
   names(data) = c("hospitals", outcome)
@@ -18,7 +19,7 @@ best <- function(state, outcome){
   data = data[order(data[outcome]),]
   return(data[1,1])
 }
-
+## Rank hospital in a state function
 rankhospital <- function(state, outcome, num = "best") {
   ## Read outcome data
   dataold <- read.csv("outcome-of-care-measures.csv", na.strings="Not Available", stringsAsFactors=FALSE)
@@ -52,7 +53,7 @@ rankhospital <- function(state, outcome, num = "best") {
   ## rate
   return(data[num,1])
 }
-
+##rank all hospitals
 rankall <- function(outcome, num = "best") {
   ## Read outcome data
   dataold <- read.csv("outcome-of-care-measures.csv", na.strings="Not Available", stringsAsFactors=FALSE)
