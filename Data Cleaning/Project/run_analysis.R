@@ -72,4 +72,6 @@ secTidySet <- aggregate(. ~subjectId + activityId, setWithActivityNames, mean)
 secTidySet <- secTidySet[order(secTidySet$subjectId, secTidySet$activityId),]
 
 ##writing tidy table
-setForMeanAndStd <- setAllInOne[ , mean_and_std == TRUE]
+write.table(secTidySet, "tidy.txt", row.name=FALSE)
+
+
