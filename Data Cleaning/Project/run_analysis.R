@@ -74,4 +74,3 @@ secTidySet <- secTidySet[order(secTidySet$subjectId, secTidySet$activityId),]
 ##writing tidy table
 write.table(secTidySet, "tidy.txt", row.name=FALSE)
 
-
